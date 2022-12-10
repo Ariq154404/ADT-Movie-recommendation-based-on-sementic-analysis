@@ -1,0 +1,40 @@
+1  ls
+    2  cd packages
+    3  ls
+    4  cd packages
+    5  pwd
+    6  ls
+    7  source venv bin/activate
+    8  source venv/bin/activate
+    9  ls
+   10  cd python
+   11  ls
+   12  cd..
+   13  exit
+   14  cd packages
+   15  python3 -m env2 venv
+   16  python3 -m venv env2
+   17  source env2/bin/activate
+   18  python --version
+   19  pwd
+   20  mkdir python
+   21  cd python
+   22  pwd
+   23  pip install "elasticsearch<7.14.0" -t .
+   24  pip install requests -t .
+   25  ckear
+   26  clear
+   27  pip install requests-aws4auth -t .
+   28  clear
+   29  pip install boto3
+   30  clear
+   31  ls
+   32  rm -rf *dist-info
+   33  clear
+   34  ls
+   35  cd ..
+   36  zip -r adt2.zip python
+   37  clear
+   38  aws s3 cp adt2.zip s3://nlu-search-s3buckettraining-1cfl54rl05z1h/
+   39  exit
+   40  touch cmds.txt

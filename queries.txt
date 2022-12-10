@@ -1,0 +1,66 @@
+SELECT Distinct(adult) from movies_metadata
+
+
+
+select avg(runtime) from movies_metadata
+where lang = 'en';
+
+select Count(lang) as tot,
+	avg(runtime) as avg_rtn ,
+	avg(popularity) as avg_pop,
+	avg(revenue) as avg_rev,
+	avg(budget) as avg_bug
+from movies_metadata
+group by adult,
+	lang
+Having adult = true
+	and lang = 'en'
+
+
+select Count(lang) as tot,
+	avg(runtime) as avg_rtn ,
+	avg(popularity) as avg_pop,
+	avg(revenue) as avg_rev,
+	avg(budget) as avg_bug
+from movies_metadata
+group by adult,
+	lang
+Having adult = false
+	and lang = 'en'
+
+
+
+select
+    year(release_date) as yr,
+    Count(lang) as tot,
+	avg(runtime) as avg_rtn ,
+	avg(popularity) as avg_pop,
+	avg(revenue) as avg_rev,
+	avg(budget) as avg_bug
+from movies_metadata
+group by year(release_date)
+Having year(release_date) > 2000
+
+
+
+select avg(rating) as avg_rat, 
+count(userid)  as tot_usr,
+movieid
+from ratings
+where Year(ratings.date) > 1900
+group by movieid
+
+
+select lang, 
+Avg(runtime) over(
+PARTITION BY lang
+order by Year(release_date) 
+) as avg_rtn
+from movies_metadata
+order by avg_rtn 
+DESC
+
+select Distinct(lang)  from movies_metadata ;
+
+select Year(ratings.date) from ratings
+limit 10
